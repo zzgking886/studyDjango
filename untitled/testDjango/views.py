@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
 from testDjango.models import Book
+from testDjango.models import User
 from testDjango.serializers import BookSerializers
+from testDjango.serializers import UserSerializers
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
@@ -30,3 +32,25 @@ def post_book_list(request):
     classmates = ['Michael', 'Bob', 'Tracy']
     s = json.dumps(classmates)
     return JSONResponse(s)
+
+def user_list(request):
+    if request.method == 'GET':
+        user = User.objects.all()
+        ser = UserSerializers(user,many = True)
+        return JSONResponse(ser.data)
+
+def addNum(request):
+    if request.method == 'GET':
+        a = request.GET['a']
+        b = request.GET['b']
+        c = int(a) + int(b)
+        return JSONResponse(c)
+
+@csrf_exempt
+def postAddNum(request):
+    if request.method == 'POST':
+        a = request.POST['a']
+        b = request.POST['b']
+        c = int(a) + int(b)
+        d = 'result = ',c
+        return JSONResponse(d)

@@ -49,4 +49,7 @@ from testDjango.views import *
 urlpatterns = [
     url(r'^zzg/(\d+)', book_list),
     url(r'^zzgpost/', post_book_list),
+    url(r'^zzguser/', user_list),
+    url(r'^zzgadd', addNum),
+    url(r'^zzgpostadd', postAddNum)
 ]
