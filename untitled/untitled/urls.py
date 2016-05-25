@@ -51,5 +51,6 @@ urlpatterns = [
     url(r'^zzgpost/', post_book_list),
     url(r'^zzguser/', user_list),
     url(r'^zzgadd', addNum),
-    url(r'^zzgpostadd', postAddNum)
+    url(r'^zzgpostadd', postAddNum),
+    url(r'^zzglogin', userLogin)
 ]
