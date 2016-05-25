@@ -2,6 +2,7 @@ from testDjango.models import Book
 from testDjango.models import User
 from rest_framework import serializers
 
+# user rest_framework to connect database
 
 class BookSerializers(serializers.HyperlinkedModelSerializer):
     class Meta:

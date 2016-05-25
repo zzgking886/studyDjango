@@ -8,6 +8,8 @@ from testDjango.serializers import UserSerializers
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
+# return json data page
+
 class JSONResponse(HttpResponse):
     def __init__(self,data,**kwagrs):
         content = JSONRenderer().render(data)

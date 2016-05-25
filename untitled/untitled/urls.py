@@ -46,6 +46,8 @@ from testDjango.views import *
 #     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 # ]
 
+# config url to pass api
+
 urlpatterns = [
     url(r'^zzg/(\d+)', book_list),
     url(r'^zzgpost/', post_book_list),
