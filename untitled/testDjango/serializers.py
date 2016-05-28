@@ -1,5 +1,6 @@
 from testDjango.models import Book
 from testDjango.models import User
+from testDjango.models import UserTable
 from rest_framework import serializers
 
 # user rest_framework to connect database
@@ -31,3 +32,17 @@ class UserSerializers(serializers.HyperlinkedModelSerializer):
                 instance.nickname = attrs['nickname']
                 return  instance
             return User(**attrs)
+
+class UserTableSerializers(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UserTable
+        fields = ('userId','userName','userNickName','userSex')
+
+        def restore_object(self, attrs, instance = None):
+            if instance:
+                instance.userId = attrs['userId']
+                instance.userName = attrs['userName']
+                instance.userNickName = attrs['userNickName']
+                instance.userSex = attrs['userSex']
+                return  instance
+            return UserTable(**attrs)

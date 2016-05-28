@@ -21,6 +21,7 @@ from testDjango.models import Book
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from testDjango.views import *
+from testDjango.secondviews import *
 
 
 
@@ -47,6 +48,7 @@ from testDjango.views import *
 # ]
 
 # config url to pass api
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^zzg/(\d+)', book_list),
@@ -54,5 +56,7 @@ urlpatterns = [
     url(r'^zzguser/', user_list),
     url(r'^zzgadd', addNum),
     url(r'^zzgpostadd', postAddNum),
-    url(r'^zzglogin', userLogin)
+    url(r'^zzglogin', userLogin),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^usertablelist', secodeUserTableList)
 ]

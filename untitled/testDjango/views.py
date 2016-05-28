@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
 from testDjango.models import Book
 from testDjango.models import User
+from testDjango.models import UserTable
 from testDjango.serializers import BookSerializers
 from testDjango.serializers import UserSerializers
+from testDjango.serializers import UserTableSerializers
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
@@ -37,9 +39,10 @@ def post_book_list(request):
 
 def user_list(request):
     if request.method == 'GET':
-        user = User.objects.all()
+        user = User.objects.all().order_by('userId') # order_by is equal to sql desc
         ser = UserSerializers(user,many = True)
-        return JSONResponse(ser.data)
+        dicResult = {'code':200, 'status':'success','data':ser.data}
+        return JSONResponse(dicResult)
 
 def addNum(request):
     if request.method == 'GET':
@@ -68,3 +71,9 @@ def userLogin(request):
         else:
             return JSONResponse({'code' : '404', 'status' : 'fail'})
 
+def userTableList(request):
+    if request.method == 'GET':
+        usertablelist = UserTable.objects.all()
+        usertable = UserTableSerializers(usertablelist, many=True)
+        dicResult = {'code':200,'data':usertable.data}
+        return JSONResponse(dicResult)
