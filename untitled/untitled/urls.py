@@ -58,5 +58,6 @@ urlpatterns = [
     url(r'^zzgpostadd', postAddNum),
     url(r'^zzglogin', userLogin),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^usertablelist', secodeUserTableList)
+    url(r'^usertablelist', secodeUserTableList),
+    url(r'',include(admin.site.urls))
 ]

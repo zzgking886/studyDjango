@@ -35,6 +35,8 @@ class UserTable(models.Model):
     userName = models.CharField('用户名', max_length=256)
     userNickName = models.CharField('用户昵称', max_length=256)
     userSex = models.CharField('性别', max_length=4)
+    pub_date = models.DateTimeField('发表时间', auto_now_add=True, editable = True)
+    update_time = models.DateTimeField('更新时间',auto_now=True, null=True)
 
     def __str__(self):
         return self.userId
