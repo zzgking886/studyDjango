@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'zzgSystemServer',
-    'django_uwsgi',
-    'gunicorn',
 ]
 
 REST_FRAMEWORK = {

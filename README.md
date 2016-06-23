@@ -30,4 +30,6 @@ mysql -u root -p 命令进入数据库，可以操作 show tables ; 等操作。
 配置完之后，运行命令 ： gunicorn -b 0.0.0.0:8000  --workers=2 zzgSystem.wsgi    
 其中  zzgSystem代表django中app的名字。 workers 代表占用cpu的线程数。
 
+http://tutos.readthedocs.io/en/latest/source/ndg.html
+
 正在配置nginx中...
