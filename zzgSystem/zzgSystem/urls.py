@@ -19,5 +19,9 @@ from zzgSystemServer.views import *
 
 urlpatterns = [
     url(r'^usertablelist', userTableList),
-    url(r'',admin.site.urls)
+    url(r'^userlogin', userLogin),
+    url(r'',admin.site.urls),
+    url(r'^vrtablelist', vrTableList),
+    # url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
+    # url(r'^admin/', include(admin.site.urls)),
 ]
