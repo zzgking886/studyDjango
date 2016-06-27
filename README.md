@@ -32,4 +32,14 @@ mysql -u root -p 命令进入数据库，可以操作 show tables ; 等操作。
 
 http://tutos.readthedocs.io/en/latest/source/ndg.html
 
+nginx 配置地址与端口http://127.0.0.1:8020
+
+gunicorn 运行命令：gunicorn ×××.wsgi:application -b 127.0.0.1:8020 --reload(要到django的工程目录下。)
+
+重启nginx 命令 先验证语法是否有错误：sudo nginx -t 。之后：sudo nginx -s reload
+
+如果遇到nginx pid 启动错误 用这两句：
+$ sudo nginx -c /usr/local/etc/nginx/nginx.conf
+$ sudo nginx -s reload
+
 正在配置nginx中...
