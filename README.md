@@ -26,6 +26,8 @@ python manage.py migrate
 在mysql中 首先配置环境变量
 mysql -u root -p 命令进入数据库，可以操作 show tables ; 等操作。
 
+配置服务器和gunicorn:
+
 配置uswgi 失败，无法启动，改为 gunicorn     这个比较好用地址http://gunicorn.org/
 配置完之后，运行命令 ： gunicorn -b 0.0.0.0:8000  --workers=2 zzgSystem.wsgi    
 其中  zzgSystem代表django中app的名字。 workers 代表占用cpu的线程数。
@@ -42,4 +44,13 @@ gunicorn 运行命令：gunicorn ×××.wsgi:application -b 127.0.0.1:8020 --rel
 $ sudo nginx -c /usr/local/etc/nginx/nginx.conf
 $ sudo nginx -s reload
 
-正在配置nginx中...
+对于css等样式文件缺失问题：
+vim工具修改 nginx中配置 local /static/ 然后root 静态文件路径。
+在django项目的url.py中添加如下代码:
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT )
+样式终于有了，搞了好几天啊！！！！！
+
+正在配置nginx外网访问中...

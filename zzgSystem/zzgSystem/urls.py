@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from zzgSystemServer.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^usertablelist', userTableList),
@@ -24,4 +26,5 @@ urlpatterns = [
     url(r'^vrtablelist', vrTableList),
     # url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
     # url(r'^admin/', include(admin.site.urls)),
+    static(settings.STATIC_URL, document_root = settings.STATIC_ROOT )
 ]
