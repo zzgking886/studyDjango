@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^userlogin', userLogin),
     url(r'',admin.site.urls),
     url(r'^vrtablelist', vrTableList),
+    url(r'^checkbundleid', checkBundleId)
     # url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
     # url(r'^admin/', include(admin.site.urls)),
-    static(settings.STATIC_URL, document_root = settings.STATIC_ROOT )
 ]
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT )
