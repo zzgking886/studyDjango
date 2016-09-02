@@ -18,14 +18,22 @@ from django.contrib import admin
 from zzgSystemServer.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib import staticfiles
 
 urlpatterns = [
     url(r'^usertablelist', userTableList),
     url(r'^userlogin', userLogin),
     url(r'',admin.site.urls),
     url(r'^vrtablelist', vrTableList),
-    url(r'^checkbundleid', checkBundleId)
+    url(r'^checkbundleid', checkBundleId),
+    url(r'^testwebview/', testWebView),
+    url(r'^testwebview1', testWebView1),
+    # url(r'image/(?P<path>.*)','django.views.static.serve',{'document_root':'/Users/zzg/PycharmProjects/zzgSystem/htmlPage/image'}),
     # url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
     # url(r'^admin/', include(admin.site.urls)),
 ]
-urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT )
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+# urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += static('/htmlPage/',document_root = '/Users/zzg/PycharmProjects/zzgSystem/htmlPage/')
+# urlpatterns += static('','','/Users/zzg/PycharmProjects/zzgSystem/htmlPage/image')

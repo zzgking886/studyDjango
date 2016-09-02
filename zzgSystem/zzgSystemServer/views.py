@@ -10,6 +10,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 import json
+from django.template import Template, Context
 # Create your views here.
 
 class JSONResponse(HttpResponse):
@@ -105,3 +106,23 @@ def checkBundleId(request):
             dicResult = {'code':999, 'data':'这是一个无效ID','bundleId':bundId}
 
         return JSONResponse(dicResult)
+
+def testWebView(request):
+    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/secondPage.html')
+    t = Template(web.read())
+    web.close()
+    # c = Context({"person_name": "zzg"})
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+def testWebView1(request):
+    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/firstPage.html')
+    t = Template(web.read())
+    web.close()
+    # c = Context({"person_name": "zzg"})
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+
