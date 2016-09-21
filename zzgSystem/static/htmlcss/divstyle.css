@@ -1,0 +1,36 @@
+body{
+    margin: 0px;
+}
+
+div#content{
+    width: 100%;
+    height: 900px;
+    background-color: #3c763d;
+}
+
+div#header{
+    width: 100%;
+    height: 10%;
+    background-color: darkorchid;
+}
+
+div#content_menu{
+    width: 30%;
+    height: 80%;
+    background-color: #269abc;
+    float: left;
+}
+
+div#content_body{
+    width: 70%;
+    height: 80%;
+    background-color: moccasin;
+    float: left;
+}
+
+div#footer{
+    width:100%;
+    height: 10%;
+    background-color: orange;
+    clear: both;
+}

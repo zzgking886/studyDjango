@@ -28,10 +28,9 @@ urlpatterns = [
     url(r'^vrtablelist', vrTableList),
     url(r'^checkbundleid', checkBundleId),
     url(r'^testwebview/', testWebView),
-    url(r'^testwebview1', testWebView1),
-    # url(r'image/(?P<path>.*)','django.views.static.serve',{'document_root':'/Users/zzg/PycharmProjects/zzgSystem/htmlPage/image'}),
-    # url(r'^admin/uwsgi/', include('django_uwsgi.urls')),
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^testindex01', testindex01),
+    url(r'^testindex02', testindex02),
+    url(r'^testcanvas', testcanvas),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
