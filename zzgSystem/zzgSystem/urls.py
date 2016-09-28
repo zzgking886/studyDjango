@@ -30,7 +30,8 @@ urlpatterns = [
     url(r'^testwebview/', testWebView),
     url(r'^testindex01', testindex01),
     url(r'^testindex02', testindex02),
-    url(r'^testcanvas', testcanvas),
+    # url(r'^testcanvas', testcanvas),
+    url(r'^testcanvas02', testcanvastwo),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 # urlpatterns += staticfiles_urlpatterns()

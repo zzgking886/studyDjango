@@ -1,6 +1,5 @@
 __author__ = 'zzg'
-from zzgSystemServer.models import UserTable
-from zzgSystemServer.models import VRVideoTable
+from zzgSystemServer.models import *
 from rest_framework import serializers
 
 

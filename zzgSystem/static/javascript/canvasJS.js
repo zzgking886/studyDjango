@@ -7,8 +7,8 @@ var mycanvas,context;
 window.onload = function ()
 {
     creatCanvas();
-    drawRect();
-    // drawImage();
+    // drawRect();
+    drawImage();
 }
 
 function creatCanvas()

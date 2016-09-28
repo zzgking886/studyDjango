@@ -141,4 +141,12 @@ def testcanvas(request):
     html = t.render(c)
     return HttpResponse(html)
 
+def testcanvastwo(request):
+    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/canvas02.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)
+
 
