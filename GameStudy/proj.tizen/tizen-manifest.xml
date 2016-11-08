@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="2.3" package="cn.cntv.MbddTest06" version="1.0.0">
+    <ui-application appid="cn.cntv.MbddTest06" exec="hellocpp" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+        <label>GameStudy</label>
+        <icon>GameStudy.png</icon>
+    </ui-application>
+</manifest>
