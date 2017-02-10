@@ -6,12 +6,16 @@ from zzgSystemServer.models import VRVideoTable
 from zzgSystemServer.serializers import UserTableSerializers
 from zzgSystemServer.serializers import VRVideoSerializers
 from django.views.decorators.csrf import csrf_exempt
+from django.core.context_processors import csrf
 from django.conf import settings
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 import json
 from django.template import Template, Context
+
 # Create your views here.
+_pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
+
 
 class JSONResponse(HttpResponse):
     def __init__(self, data, **kwagrs):
@@ -23,14 +27,14 @@ class JSONResponse(HttpResponse):
 def userLogin(request):
     if request.method == 'POST':
         username = request.POST['username']
-        password = request.POST['pwd']
-        if username == 'zzg' and password == 'wushixia1119':
+        password = request.POST['password']
+        if username == 'zzg' and password == 'wushixia':
             dicResult = {'code': '200', 'status': 'success'}
             return JSONResponse(dicResult)
         else:
-            return JSONResponse({'code': '404', 'status': 'fail'})
+            return JSONResponse({'code': '404', 'status': 'no pass'})
     else:
-        return JSONResponse({'code': '404', 'status': 'fail'})
+        return JSONResponse({'code': '404', 'status': 'no post'})
 
 
 def userTableList(request):
@@ -101,11 +105,12 @@ def checkBundleId(request):
         for oneBundleId in bundIdList:
             print(bundId)
             if oneBundleId == bundId:
-                dicResult = {'code':200, 'data':'这是一个有效ID','bundleId':bundId}
+                dicResult = {'code': 200, 'data': '这是一个有效ID', 'bundleId': bundId}
         if len(dicResult) == 0:
-            dicResult = {'code':999, 'data':'这是一个无效ID','bundleId':bundId}
+            dicResult = {'code': 999, 'data': '这是一个无效ID', 'bundleId': bundId}
 
         return JSONResponse(dicResult)
+
 
 def testWebView(request):
     web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/secondPage.html')
@@ -116,6 +121,7 @@ def testWebView(request):
     html = t.render(c)
     return HttpResponse(html)
 
+
 def testindex01(request):
     web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/index01.html')
     t = Template(web.read())
@@ -125,6 +131,7 @@ def testindex01(request):
     html = t.render(c)
     return HttpResponse(html)
 
+
 def testindex02(request):
     web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/index02.html')
     t = Template(web.read())
@@ -132,6 +139,7 @@ def testindex02(request):
     c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
+
 
 def testcanvas(request):
     web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/canvas.html')
@@ -141,8 +149,9 @@ def testcanvas(request):
     html = t.render(c)
     return HttpResponse(html)
 
+
 def testcanvastwo(request):
-    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/canvas02.html')
+    web = open(_pageTemplates + 'canvas02.html')
     t = Template(web.read())
     web.close()
     c = Context({"": ""})
@@ -150,3 +159,19 @@ def testcanvastwo(request):
     return HttpResponse(html)
 
 
+def testvideoPage(request):
+    web = open(_pageTemplates + 'videoPage.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+
+def testformCommit(request):
+    web = open(_pageTemplates + 'formPage.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)

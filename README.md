@@ -24,6 +24,10 @@ python manage.py migrate
 在view中写上post或者get方法，然后从数据库读取。
 
 在mysql中 首先配置环境变量
+打开终端,输入:
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
 mysql -u root -p 命令进入数据库，可以操作 show tables ; 等操作。
 
 配置服务器和gunicorn:
