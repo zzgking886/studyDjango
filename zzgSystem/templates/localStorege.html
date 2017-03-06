@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <textarea style="width: 200px;height: 200px" id="ta"></textarea>
+    <button id="btn">save</button>
+    <script>
+        var text = document.getElementById("ta");
+        var button = document.getElementById("btn");
+        var inputtext = localStorage.getItem("inputText");
+        if (inputtext)
+        {
+            text.value = inputtext;
+        }
+
+        button.onclick = function () {
+            localStorage.setItem("inputText",text.value);
+        }
+    </script>
+</body>
+</html>

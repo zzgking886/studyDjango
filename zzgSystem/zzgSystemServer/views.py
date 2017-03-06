@@ -175,3 +175,19 @@ def testformCommit(request):
     c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
+
+def testLocalStorege(request):
+    web = open(_pageTemplates + 'localStorege.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"":""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+def testReponseDesign(request):
+    web = open(_pageTemplates + 'ReponseDesign.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"":""})
+    html = t.render(c)
+    return HttpResponse(html)

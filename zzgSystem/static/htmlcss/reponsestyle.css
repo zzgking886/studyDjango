@@ -1,0 +1,55 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+div#headerview,
+div#contentview{
+    margin-top: 10px;
+}
+
+/*
+整体div设置
+*/
+div#headerview{
+    width: 100%;
+    height: 100px;
+    background-color: #ec971f;
+}
+div#contentview{
+    width: 100%;
+    height: 500px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+div#footerview{
+    width: 100%;
+    height: 100px;
+    background-color: #761c19;
+    margin-top: 10px;
+}
+
+/*
+contentview中div
+*/
+
+div#left,
+div#main,
+div#right{
+    float: left;
+    background-color: fuchsia;
+}
+
+div#left,div#right{
+    width: 10%;
+    height: 100%;
+}
+div#main{
+    width: 78%;
+    height: 100%;
+    margin: 0 1%;
+}
+
+@media screen and (min-width: 960px){
+
+}

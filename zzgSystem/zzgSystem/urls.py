@@ -34,6 +34,8 @@ urlpatterns = [
     url(r'^testcanvas02', testcanvastwo),
     url(r'^testvideoPage', testvideoPage),
     url(r'^testformCommit', testformCommit),
+    url(r'^testLocalStorege', testLocalStorege),
+    url(r'^testReponseDesign', testReponseDesign),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 # urlpatterns += staticfiles_urlpatterns()
