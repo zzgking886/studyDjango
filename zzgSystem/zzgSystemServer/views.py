@@ -6,15 +6,21 @@ from zzgSystemServer.models import VRVideoTable
 from zzgSystemServer.serializers import UserTableSerializers
 from zzgSystemServer.serializers import VRVideoSerializers
 from django.views.decorators.csrf import csrf_exempt
-from django.core.context_processors import csrf
+# from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 from django.conf import settings
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 import json
 from django.template import Template, Context
+import socket
 
 # Create your views here.
-_pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
+_pageTemplates = ''
+if socket.gethostname() == 'iZ2ze7xv8tix4ws606m907Z':
+    _pageTemplates = '/root/myfirstproject/zzgSystem/templates/'
+else:
+    _pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
 
 
 class JSONResponse(HttpResponse):
@@ -167,7 +173,6 @@ def testvideoPage(request):
     html = t.render(c)
     return HttpResponse(html)
 
-
 def testformCommit(request):
     web = open(_pageTemplates + 'formPage.html')
     t = Template(web.read())
@@ -191,3 +196,14 @@ def testReponseDesign(request):
     c = Context({"":""})
     html = t.render(c)
     return HttpResponse(html)
+
+def cntvInterFaceCheck(request):
+    web = open(_pageTemplates + 'InterFaceCheck.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"":""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+
+# http://www.bootcss.com/

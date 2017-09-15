@@ -2,14 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>表单交互</title>
+    <title>万能病毒系统</title>
 </head>
 <body>
-<form action="/userlogin" method="POST">
-    用户名:<input type="text" name="username" value="zzg">
-    密 码:<input type="password" name="password" value="wushixia">
-    </br>
-    <input type="submit"  value="提交">
+{#<form action="/userlogin" method="POST">#}
+{#    用户名:<input type="text" name="username">#}
+{#    密 码:<input type="password" name="password">#}
+{#    </br>#}
+{#    <input type="submit"  value="提交">#}
+{#</form>#}
+
+<p class="navbar-text" id="nav">用户中心</p>
+<form action="/userlogin" class="form-inline" method="post">
+  <div class="form-group" id="usernamediv">
+    <label class="sr-only" for="exampleInputEmail3">用户名</label>
+    <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Email" name="username">
+  </div>
+  <div class="form-group" id="passworddiv">
+    <label class="sr-only" for="exampleInputPassword3">密码</label>
+    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password" name="password">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Sign in</button>
 </form>
+
 </body>
+<style>
+    p#nav{
+        background-color: #2e6da4;
+        height: 100px;
+    }
+    div#usernamediv,
+    div#passworddiv
+    {
+        text-align: center;
+    }
+</style>
+<script>
+
+</script>
 </html>

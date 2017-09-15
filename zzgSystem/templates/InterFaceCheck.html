@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>央视网接口检查</title>
+    <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/bootstrap.min.css">
+    <script src="/static/javascript/checkjs.js"></script>
+    <script src="/static/rest_framework/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+        $.ajax({
+             type: "get",
+             async: false,
+             url: "http://cbox.cntv.cn/json2015/other/mobileconfig/index.json",
+             dataType: "jsonp",
+             jsonp: "callback",
+             jsonpCallback:"flightHandler",
+             success: function(json){
+                 alert(json);
+             },
+             error: function(){
+                 alert('fail');
+             }
+         });
+     });
+</script>
+</head>
+<body>
+<h2>央视影音CBox</h2>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-success">主配置
+          <div class="progress">
+              <div id="mainconfigdiv" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+
+              </div>
+          </div>
+      </li>
+      <li class="list-group-item list-group-item-info">VDN</li>
+      <li class="list-group-item list-group-item-warning">启动图广告</li>
+      <li class="list-group-item list-group-item-danger">直播列表</li>
+    </ul>
+<h2>央视新闻</h2>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+</div>
+</body>
+</html>
+

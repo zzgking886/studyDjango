@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+div#headerview,
+div#contentview{
+    margin-top: 10px;
+}
+
+/*
+整体div设置
+*/
+div#headerview{
+    width: 100%;
+    height: 100px;
+    background-color: #1b6d85;
+}
+div#contentview{
+    width: 100%;
+    height: 500px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+div#footerview{
+    width: 100%;
+    height: 100px;
+    background-color: #761c19;
+    margin-top: 10px;
+}
+
+/*
+contentview中div
+*/
+
+div#left,
+div#main,
+div#right{
+    float: left;
+    background-color: #cc1111;
+}
+
+@media screen and (min-width: 960px){
+    div#left,div#right{
+    width: 10%;
+    height: 100%;
+        background-color: #1e347b;
+    }
+    div#main{
+        width: 78%;
+        height: 100%;
+        margin: 0 1%;
+    }
+}
+
+/*Generated source files should not be edited.The changes will be lost when sources are regenerated*/
+@media screen and (min-width: 600px) and (max-width: 960px){
+    div#headerview,
+    div#footerview,
+    div#contentview{
+        width: 600px;
+    }
+    div#left,
+    div#main{
+        float: left;
+        height: 400px;
+    }
+    div#right{
+        display: none;
+    }
+    div#left{
+        width: 160px;
+    }
+    div#main{
+        width: 435px;
+        margin-left: 5px;
+    }
+    div#contentview{
+        height: 400px;
+    }
+}

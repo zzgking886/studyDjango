@@ -1,0 +1,50 @@
+data:
+{
+  订阅号id:
+  订阅号名称:
+  订阅数:
+  视频个数:
+  简介:
+  logoImg:
+  normalLiveList:
+        {
+        "title": "CCTV-1",
+        "channelImg": "http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/1/15/1452821982937_654.png",
+        "channelBigImg": "http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/1/15/1452826944234_174.png",
+        "p2pUrl": "pa://cctv_p2p_hdcctv1",
+        "audioUrl": "pa://cctv_p2p_hdcctv1",
+        "channelId": "cctv1",
+        "interactType": "杈圭湅杈硅亰",
+        "channelType": "",
+        "multiChannelUrl": "",
+        "shareUrl": "http:tv.cntv.cn/live/cctv1/"
+        }
+  预告预约:
+        {
+        "title":"央视一套开播了",
+        "p2pUrl": "pa://cctv_p2p_hdcctv1",
+        "audioUrl": "pa://cctv_p2p_hdcctv1",
+        "channelId": "cctv1",
+        "timestamp":"11223344",
+        "recordtitle":"您预约的节目xxx马上就要开始啦"
+        "type":"record"
+        }
+  最新看点:
+        [
+        {
+         "title":"中国中央电视台"
+         "weburl":"http://www.baidu.com"
+         "type":"h5"
+         "shareUrl":"http://www.baidu.com"
+        },
+        ]
+  最热咨询:
+        [
+        {
+        "type":"h5"
+        }
+        {
+
+        }
+        ]
+}
