@@ -14,13 +14,23 @@ from django.views.decorators.cache import cache_page
 import json
 from django.template import Template, Context
 import socket
+from django.http.response import StreamingHttpResponse
+import scrapy
+import urllib.request
+import http, time
+
+from django.contrib.auth import authenticate
+from django.views.generic.base import View
 
 # Create your views here.
-_pageTemplates = ''
-if socket.gethostname() == 'iZ2ze7xv8tix4ws606m907Z':
-    _pageTemplates = '/root/myfirstproject/zzgSystem/templates/'
-else:
-    _pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
+# _pageTemplates = ''
+# if socket.gethostname() == 'iZ2ze7xv8tix4ws606m907Z':
+#     _pageTemplates = '/root/myfirstproject/zzgSystem/templates/'
+# else:
+#     _pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
+
+_pageTemplates = '/Users/zzg/PycharmProjects/zzgSystem/templates/'
+resoursePath = '/Users/zzg/PycharmProjects/zzgSystem/static/htmlImg'
 
 
 class JSONResponse(HttpResponse):
@@ -32,15 +42,30 @@ class JSONResponse(HttpResponse):
 @csrf_exempt  # POST方法
 def userLogin(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        if username == 'zzg' and password == 'wushixia':
+        user_name = request.POST['username']
+        pass_word = request.POST.get('password')
+        users = authenticate(username='zzgking886', password='wushixia1119')
+        if users is not None:
             dicResult = {'code': '200', 'status': 'success'}
             return JSONResponse(dicResult)
         else:
-            return JSONResponse({'code': '404', 'status': 'no pass'})
+            return JSONResponse({'code': '0', 'status': 'user is not exist'})
     else:
         return JSONResponse({'code': '404', 'status': 'no post'})
+
+
+class LoginView(View):
+    def get(self,request):
+        return JSONResponse({'code': '404', 'status': 'no post'})
+    def post(self,request):
+        user_name = request.POST['username']
+        pass_word = request.POST.get('password')
+        users = authenticate(username='zzgking886', password='wushixia1119')
+        if users is not None:
+            dicResult = {'code': '200', 'status': 'success'}
+            return JSONResponse(dicResult)
+        else:
+            return JSONResponse({'code': '0', 'status': 'user is not exist'})
 
 
 def userTableList(request):
@@ -66,15 +91,20 @@ def userTableList(request):
 
 def vrTableList(request):
     if request.method == 'GET':
-        if cache.get('vrtablelist'):
-            vrlist = cache.get('vrtablelist')
-            vrtable = VRVideoSerializers(vrlist, many=True)
-            dicResult = {'code': 200, 'cache': 'true', 'data': vrtable.data}
+        # if cache.get('vrtablelist'):
+        #     vrlist = cache.get('vrtablelist')
+        #     vrtable = VRVideoSerializers(vrlist, many=True)
+        #     dicResult = {'title': 200, 'cache': 'true', 'data': vrtable.data}
+        # else:
+        checkTitle = request.GET.get('title');
+        if checkTitle:
+            vrtablelist = VRVideoTable.objects.filter(videoTitle__regex=checkTitle)
         else:
             vrtablelist = VRVideoTable.objects.all()
-            vrtable = VRVideoSerializers(vrtablelist, many=True)
-            dicResult = {'code': 200, 'data': vrtable.data}
-            cache.set('vrtablelist', vrtablelist)
+        vrtable = VRVideoSerializers(vrtablelist, many=True)
+        dicResult = {'code': 200, 'data': vrtable.data}
+        cache.set('vrtablelist', vrtablelist)
+
         return JSONResponse(dicResult)
 
 
@@ -119,11 +149,11 @@ def checkBundleId(request):
 
 
 def testWebView(request):
-    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/secondPage.html')
+    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/firstPage.html')
     t = Template(web.read())
     web.close()
-    # c = Context({"person_name": "zzg"})
-    c = Context({"": ""})
+    c = Context({"person_name": "zzg","person_sex":"男"})
+    # c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
 
@@ -157,7 +187,7 @@ def testcanvas(request):
 
 
 def testcanvastwo(request):
-    web = open(_pageTemplates + 'canvas02.html')
+    web = open('/Users/zzg/PycharmProjects/zzgSystem/templates/canvas02.html')
     t = Template(web.read())
     web.close()
     c = Context({"": ""})
@@ -173,6 +203,7 @@ def testvideoPage(request):
     html = t.render(c)
     return HttpResponse(html)
 
+
 def testformCommit(request):
     web = open(_pageTemplates + 'formPage.html')
     t = Template(web.read())
@@ -181,29 +212,93 @@ def testformCommit(request):
     html = t.render(c)
     return HttpResponse(html)
 
+
 def testLocalStorege(request):
     web = open(_pageTemplates + 'localStorege.html')
     t = Template(web.read())
     web.close()
-    c = Context({"":""})
+    c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
+
 
 def testReponseDesign(request):
     web = open(_pageTemplates + 'ReponseDesign.html')
     t = Template(web.read())
     web.close()
-    c = Context({"":""})
+    c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
+
 
 def cntvInterFaceCheck(request):
     web = open(_pageTemplates + 'InterFaceCheck.html')
     t = Template(web.read())
     web.close()
-    c = Context({"":""})
+    c = Context({"": ""})
     html = t.render(c)
     return HttpResponse(html)
 
 
-# http://www.bootcss.com/
+def testLiveReturn(request):
+    web = open(_pageTemplates + 'testLiveReturn.html')
+    t = Template(web.read())
+    web.close()
+    c = Context({"": ""})
+    html = t.render(c)
+    return HttpResponse(html)
+
+
+def testiosplay(request):
+    # do something...
+    videopath = resoursePath + "basketball.mp4"
+    response = StreamingHttpResponse(videopath, status=200, content_type='video/mpeg4')
+    response['Cache-Control'] = 'no-cache'
+    return response
+
+
+def testiosaudioplay(request):
+    videopath = resoursePath + "demo.mp3"
+    response = StreamingHttpResponse(videopath, status=200, content_type='audio/mp3')
+    response['Cache-Control'] = 'no-cache'
+    return response
+
+
+def testInterFaceTime(name, url):
+    timestamp = ""
+    start = time.time()
+    returndata = urllib.request.urlopen(url).read()
+    dataobj = json.loads(returndata.decode("utf-8"))
+    end = ""
+    if len(dataobj) > 0:
+        end = time.time()
+    else:
+        end = "time out"
+
+    if end == "time out":
+        timestamp = "time out"
+    else:
+        timestamp = ('Task runs %0.2f seconds.' % (end - start))
+
+    return [name, url, timestamp]
+
+
+def checkInterface(request):
+    configtest = testInterFaceTime('主配置', 'http://serv.cbox.cntv.cn/json/cbox6/yidongzhupeizhi/index.json')
+    return JSONResponse(configtest)
+    # http://serv.cbox.cntv.cn/json/cbox6/yidongzhupeizhi/index.json
+
+    # http://127.0.0.1:8000/static/htmlImg/outfit_f/384.png
+
+def checkPublic(request):
+    starttime = 1528967758
+    url = "http://vdn.live.cntv.cn/api2/liveTimeshift.do?channel=pa://cctv_p2p_hdcctv5&client=iosapp&starttime="
+    number = 1000
+    dataobj = ""
+    while number <= 1000000:
+        finalurl = url + str(starttime)
+        print(finalurl)
+        returndata = urllib.request.urlopen(finalurl).read()
+        dataobj = json.loads(returndata.decode("utf-8"))
+        return JSONResponse(dataobj)
+

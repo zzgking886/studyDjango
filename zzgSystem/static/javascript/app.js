@@ -22,3 +22,11 @@ function tick(exception)
     txt.text = "number->"+count+"!";
     // stage.update();
 }
+
+function cboxGetUserStatus(userid,verifycode)
+{
+    var thisUserId = userid;
+    var thisVerifycode = verifycode;
+
+    //Make something to login verify.
+}

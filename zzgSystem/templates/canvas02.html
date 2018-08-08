@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <title>canvas02</title>
-    <script src="/static/javascript/easeljs-0.8.2.min.js"></script>
+{#    <script src="/static/javascript/easeljs-0.8.2.min.js"></script>#}
+{#    <script src="/static/javascript/app2.js"></script>#}
+    <script src="{% static '/static/javascript/easeljs-0.8.2.min.js' %}"></script>
+    <script src="{% static '/static/javascript/app2.js' %}"></script>
 </head>
 <body>
     <canvas id="canvas" width="1000px" height="500px"></canvas>
-    <script src="/static/javascript/app2.js"></script>
 </body>
 </html>

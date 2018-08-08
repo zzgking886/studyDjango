@@ -20,25 +20,32 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import staticfiles
+import xadmin
+from zzgSystemServer.views import LoginView
 
 urlpatterns = [
     url(r'^usertablelist', userTableList),
-    url(r'^userlogin', userLogin),
-    url(r'',admin.site.urls),
+    url(r'^userlogin', csrf_exempt(LoginView.as_view())),
     url(r'^vrtablelist', vrTableList),
     url(r'^checkbundleid', checkBundleId),
     url(r'^testwebview/', testWebView),
     url(r'^testindex01', testindex01),
     url(r'^testindex02', testindex02),
-    # url(r'^testcanvas', testcanvas),
-    url(r'^testcanvas02', testcanvastwo),
+    url(r'^testcanvas', testcanvas),
+    url(r'^testcanvastwo', testcanvastwo),
     url(r'^testvideoPage', testvideoPage),
     url(r'^testformCommit', testformCommit),
     url(r'^testLocalStorege', testLocalStorege),
     url(r'^testReponseDesign', testReponseDesign),
     url(r'^checkcntv', cntvInterFaceCheck),
+    url(r'^testLiveReturn', testLiveReturn),
+    url(r'^testiosplayer', testiosplay),
+    url(r'^testiosaudioplay', testiosaudioplay),
+    url(r'^checkInterface', checkInterface),
+    url(r'', xadmin.site.urls),
+    url(r'^checkpublic',checkPublic),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-# urlpatterns += staticfiles_urlpatterns()
+urlpatterns += staticfiles_urlpatterns()
 # urlpatterns += static('/htmlPage/',document_root = '/Users/zzg/PycharmProjects/zzgSystem/htmlPage/')
 # urlpatterns += static('','','/Users/zzg/PycharmProjects/zzgSystem/htmlPage/image')
